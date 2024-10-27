@@ -31,7 +31,7 @@ go mod tidy
 
 ## Configuration
 
-Create a .env file in the root directory of your project with the following fields:
+Create a app.env file in the root directory of your project with the following fields:
 ```
 POSTGRES_HOST=your_host
 POSTGRES_PORT=your_port
