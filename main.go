@@ -28,13 +28,14 @@ func main() {
 
 	noteRepository := repository.NewNoteRepository(db)
 	noteService := service.NewNoteServiceImpl(noteRepository, validate)
+	userService := service.NewUserServiceImpl(repository.NewUserRepository(db), validate)
 	noteController := controller.NewNoteController(noteService)
-	routes := router.NewRouter(&noteController)
+	userController := controller.NewUserController(userService)
+	routes := router.NewRouter(&noteController, &userController)
 
 	app := fiber.New()
-	
 	app.Mount("/api", routes)
-
+	
 	app.Use(logger.New())
 	app.Use(cors.New(cors.Config{
 		AllowOrigins:     "http://localhost:3000",

@@ -8,7 +8,7 @@ import (
 	"github.com/gofiber/fiber/v2"
 )
 
-func NewRouter(noteController *controller.NoteController) *fiber.App {
+func NewRouter(noteController *controller.NoteController, userController *controller.UserController) *fiber.App {
 	router := fiber.New()
 
 	router.Route("/notes", func(r fiber.Router) {
@@ -30,7 +30,7 @@ func NewRouter(noteController *controller.NoteController) *fiber.App {
 		r.Get("/logout", middleware.DeserializeUser, controller.LogoutUser)
 	})
 
-	router.Get("/users/me", middleware.DeserializeUser, controller.GetMe)
+	router.Get("/users/me", middleware.DeserializeUser, userController.GetMe)
 
 	router.Get("/healthchecker", func(c *fiber.Ctx) error {
 		return c.Status(fiber.StatusOK).JSON(fiber.Map{
