@@ -19,7 +19,7 @@ Vivo is a Go-based application that utilizes the Fiber web framework and JWT for
 1. Clone the repository:
 
 ```
-git clone https://github.com/yourusername/vivo.git
+git clone https://github.com/LeuKongsun/vivo.git
 cd vivo
 ```
 
